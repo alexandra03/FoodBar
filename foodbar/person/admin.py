@@ -8,3 +8,4 @@ admin.site.register(Preference)
 
 admin.site.register(Restaurant)
 admin.site.register(profileRestaurantLink)
+admin.site.register(RestaurantDescription)

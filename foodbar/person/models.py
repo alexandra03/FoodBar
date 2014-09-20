@@ -48,3 +48,15 @@ class profileRestaurantLink(models.Model):
 
 	def __unicode__(self):
 		return self.restaurant.name+' with rating '+str(self.rating)+'/5'
+
+class RestaurantDescription(models.Model):
+	PREF_TYPES = (
+		('ethnicity', 'Ethnicity'),
+		('size', 'Size'),
+		('atmosphere', 'Atmosphere'),
+		('meal_time', 'Brunch, lunch, dinner, apps?'),
+		('location', 'Location'),
+		)
+	restaurant = models.ForeignKey(Restaurant)
+	name = models.CharField('Description Name', choices=PREF_TYPES, max_length=256)
+	desc_type = models.CharField('Description Type', max_length=256)		
