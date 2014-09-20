@@ -1,7 +1,18 @@
 import requests
 from requests_oauthlib import OAuth1
 
-class yelp:
+'''
+Super simple way to search Yelp API without having to do any
+authentication in the code, and without having to construct the 
+url. Return list of businesses.
+
+from yelp import yelp
+yelp = yelp.Yelp()
+yelp.search({'location':'Waterloo Ontario'})
+
+'''
+
+class Yelp:
 	def __init__(self):
 		self.base_url='http://api.yelp.com/v2/search?'
 		self.consumer_key='CoReD2fa2wY_QFyUSw6l5w'
