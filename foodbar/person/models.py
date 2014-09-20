@@ -31,6 +31,7 @@ class Preference(models.Model):
 		return 'Name: '+self.name+', Type:'+self.pref_type+', Rating:'+str(self.score)
 
 class Restaurant(models.Model):
+	yelp_id = models.CharField('Yelp ID', max_length=100)
 	name = models.CharField('Restaurant Name', max_length=100)
 	city = models.CharField('City', max_length=100)
 	state = models.CharField('State/Province', max_length=100)
