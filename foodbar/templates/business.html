@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block content %}
+	<h2>{{item.name}}<h2>
+	<h4>{% for res in item.keywords.all %}{{res.keyword}}, {% endfor %}</h4>
+	<div class="jumbotron">
+		<h3>Reviews</h3>
+    {% for review in reviews %}
+      <hr>
+      <h4>{{review.rating}}/5</h4>
+      <h5>{{review.comment}}</h5>
+    {% endfor %}
+	</div>
+{% endblock %}

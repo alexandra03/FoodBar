@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block content %}
+<div class="jumbotron">
+	<h1>Welcome to FoodBar!</h1>
+	<h3>Enter your location below to get your personalized selection of restaurants:</h3>
+	<form method="post" action="{% url "personalized" %}"> 
+		{% csrf_token %}
+		<div class="input-group">
+		  <input type="text" name="location" id="location" class="form-control" style="margin:20px;width:500px;" placeholder="Your current city">
+		</div>
+		<div style="margin-left:20px;">
+		  <input type="radio" name="selection_type" value="all">Unpersonalized list<br>
+		  <input type="radio" name="selection_type" value="kw">Match by keyword<br>
+		  <input type="radio" name="selection_type" checked value="community">Match by your community's recommendations<br>
+		</div>
+		<p><button type="submit" class="btn btn-primary" style="margin-top:20px;margin-bottom:20px;">Find somewhere to eat!</button></p>
+	</form>  
+</div>
+{% endblock %}

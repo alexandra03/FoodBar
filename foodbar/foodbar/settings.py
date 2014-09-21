@@ -59,7 +59,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+#STATIC_ROOT = '/Users/alexandra/Documents/FooBar/foodbar/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -70,6 +70,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    #'/Users/alexandra/Documents/FooBar/foodbar/person/static'
 )
 
 # List of finder classes that know how to find static files in
@@ -85,8 +86,9 @@ SECRET_KEY = '@su%knup6v%h9r=dyj37c1%4zh@^1opfnfg9$!u)cx^b2i8stp'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.filesystem.Loader',
+    #'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
 
@@ -109,6 +111,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    '/Users/alexandra/Documents/FooBar/foodbar/templates'
 )
 
 INSTALLED_APPS = (

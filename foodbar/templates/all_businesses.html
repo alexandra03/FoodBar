@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block content %}
+	<div class="list-group">
+	{% for restaurant in restaurants %}
+	  <a href="{% url "restaurant" restaurant.id %}" class="list-group-item">
+	    <h4 class="list-group-item-heading">{{restaurant.name}}, {{restaurant.city}}</h4>
+	    <p class="list-group-item-text">{% for k in restaurant.keywords.all %}{{k.keyword}}, {% endfor %}</p>
+	  </a>
+	 {% endfor %} 
+	</div>
+{% endblock %}

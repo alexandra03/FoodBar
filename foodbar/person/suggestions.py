@@ -3,11 +3,9 @@ from person.models import *
 
 
 class SmartGrouping:
-	def __init__(self, user, city='', state='', country=''):
+	def __init__(self, user, city=''):
 		self.city=city
-		self.state=state
-		self.country=country
-		self.restaurants = Restaurant.objects.filter(city=city, state=state, country=country)
+		self.restaurants = Restaurant.objects.filter(city=city)
 		self.user = user
 		self.user_kwds = user.profile_set.all()[0].keywords.all()
 
@@ -20,14 +18,15 @@ class SmartGrouping:
 		''' First, get the list of restaurants that the user has not been to'''
 		res_lst = {}
 		for res in self.restaurants:
-			if not profileRestaurantLink.objects.filter(profile=user.profile_set.all()[0], restaurant=res).count():
+			if not profileRestaurantLink.objects.filter(profile=self.user.profile_set.all()[0], restaurant=res).count():
 				res_lst.update({res.id: 0})
 
 		''' Attach the number of keywords in common between user/resto, and order '''
 		for kw in self.user_kwds:
 			matches = self.restaurants.filter(keywords__keyword=kw)
 			for match in matches:
-				res_lst[match.id]+=1
+				if match.id in res_lst:
+					res_lst[match.id]+=1
 
 		''' Remove all restaurants with no matches '''
 		matching_res = []

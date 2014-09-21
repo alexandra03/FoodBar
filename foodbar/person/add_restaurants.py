@@ -40,3 +40,15 @@ def create_restaurants(location):
 				res.keywords.add(new_kw)
 
 		offset+=20
+
+def add_new_fields(queryset):
+	from person.models import Restaurant, Profile
+	from yelp import yelp
+	yelp = yelp.Yelp()
+	for bus in queryset:
+		business = yelp.business(bus.yelp_id)
+		bus.street = business['location']['address']
+		bus.rating = int(business['rating'])
+		bus.star_url = business['rating_img_url']
+		bus.image_url = business['snippet_image_url']
+		bus.save()
