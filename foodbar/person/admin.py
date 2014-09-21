@@ -3,7 +3,9 @@ from django.contrib import admin
 from person.models import *
 
 admin.site.register(Keyword)
-admin.site.register(Profile)
+class Profileadmin(admin.ModelAdmin):
+    filter_horizontal = ("keywords",)
+admin.site.register(Profile,Profileadmin)
 admin.site.register(Preference)
 
 admin.site.register(Restaurant)
