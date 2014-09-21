@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block content %}
+	<h3>Your keywords</h3>
+	<h5>These are used to find restaurants that are suited to you. The more keywords, the better the selection we can make!</h5>
+
+	<form method="post" action="{% url "keywords" %}">
+		{% csrf_token %}
+		<div class="input-group">
+			<input type="text" name="kw" id="kw" class="form-control" style="margin:20px;width:500px;" placeholder="New keyword">
+			<button type="submit" class="btn btn-primary" style="margin-top:20px;margin-bottom:20px;">Add to your list</button>
+		</div>
+	</form>
+	<div class="list-group">
+	{% for keyword in keywords %}
+	  <a href="" class="list-group-item">
+	    <h4 class="list-group-item-heading">{{keyword.keyword}}</h4>
+	  </a>
+	 {% endfor %} 
+	</div>
+
+<script>
+	$("#kw").autocomplete({
+	  source: {{ autoselect|safe }}
+	});	
+</script>
+{% endblock %}

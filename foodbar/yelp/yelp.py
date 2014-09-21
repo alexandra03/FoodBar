@@ -15,6 +15,7 @@ yelp.search({'location':'Waterloo Ontario'})
 class Yelp:
 	def __init__(self):
 		self.base_url='http://api.yelp.com/v2/search?'
+		self.businesses_url='http://api.yelp.com/v2/business/'
 		self.consumer_key='CoReD2fa2wY_QFyUSw6l5w'
 		self.consumer_secret='kRhlJBk5sGesz_r75kKjS42FJv0'
 		self.token='8Mb9lCsJis2h02SRBe7a8sTwsc3Fmge3'
@@ -35,3 +36,6 @@ class Yelp:
 
 	def count(self, params):
 		return self.search(params, True)['total']
+
+	def business(self, bus_id):
+		return requests.get(self.businesses_url+bus_id, auth=self.auth).json()	
