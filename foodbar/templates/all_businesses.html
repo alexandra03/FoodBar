@@ -5,7 +5,8 @@
 	<div class="list-group">
 	{% for restaurant in restaurants %}
 	  <a href="{% url "restaurant" restaurant.id %}" class="list-group-item">
-	    <h4 class="list-group-item-heading">{{restaurant.name}}, {{restaurant.city}}</h4>
+	  	<img src={{restaurant.image_url}} style="display:inline-block;" alt="Image">
+	    <h4 style="display:inline-block;" class="list-group-item-heading">{{restaurant.name}}, {{restaurant.street}}, {{restaurant.city}}        <img src={{restaurant.star_url}} style="display:inline-block;" alt="Image"></h4>
 	    <p class="list-group-item-text">{% for k in restaurant.keywords.all %}{{k.keyword}}, {% endfor %}</p>
 	  </a>
 	 {% endfor %} 

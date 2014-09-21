@@ -21,14 +21,14 @@ def list_all_businesses(request):
 		restaurants = Restaurant.objects.filter(city=request.POST['location'])
 	else:
 		restaurants = Restaurant.objects.filter(city='Waterloo')
-	return render(request, 'all_businesses.html', {"restaurants":restaurants})
+	return render(request, 'all_businesses.html', {"restaurants":restaurants, 'yelp':True})
 
 def list_keyworded_businesses(request):
 	if request.method=="POST":
 		user = User.objects.all()[0]
 		groups = SmartGrouping(user, city=request.POST['location'])
 		restaurants = groups.keyword_group()
-		return render(request, 'all_businesses.html', {'restaurants': restaurants})
+		return render(request, 'all_businesses.html', {'restaurants': restaurants, 'yelp':True})
 
 def keywords(request):
 	user = User.objects.all()[0]
@@ -45,7 +45,7 @@ def keywords(request):
 def restaurant(request, id_number):
 	restaurant = Restaurant.objects.get(pk=id_number)
 	reviews = profileRestaurantLink.objects.filter(restaurant=restaurant)
-	return render(request, 'business.html', {'item':restaurant, 'reviews':reviews})
+	return render(request, 'business.html', {'item':restaurant, 'reviews':reviews, 'yelp':True})
 
 
 

@@ -46,9 +46,12 @@ def add_new_fields(queryset):
 	from yelp import yelp
 	yelp = yelp.Yelp()
 	for bus in queryset:
-		business = yelp.business(bus.yelp_id)
-		bus.street = business['location']['address']
-		bus.rating = int(business['rating'])
-		bus.star_url = business['rating_img_url']
-		bus.image_url = business['snippet_image_url']
-		bus.save()
+		try:
+			business = yelp.business(bus.yelp_id)
+			bus.street = business['location']['address']
+			bus.rating = int(business['rating'])
+			bus.star_url = business['rating_img_url']
+			bus.image_url = business['image_url']
+			bus.save()
+		except:
+			pass

@@ -2,7 +2,8 @@
 {% load url from future %}
 
 {% block content %}
-	<h2>{{item.name}}<h2>
+  <img src={{item.image_url}} alt="Image">
+	<h2>{{item.name}}<h2>{% if yelp %}<img src={{item.star_url}} style="display:inline-block;" alt="Image">{% endif %}
 	<h4>{% for res in item.keywords.all %}{{res.keyword}}, {% endfor %}</h4>
 	<div class="jumbotron">
 		<h3>Reviews</h3>
