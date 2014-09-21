@@ -33,10 +33,14 @@ class Preference(models.Model):
 class Restaurant(models.Model):
 	yelp_id = models.CharField('Yelp ID', max_length=100)
 	name = models.CharField('Restaurant Name', max_length=100)
+	street = models.CharField('Street', max_length=256, null=True, blank=True)
 	city = models.CharField('City', max_length=100)
 	state = models.CharField('State/Province', max_length=100)
 	country = models.CharField('Country', max_length=100)
 	keywords = models.ManyToManyField(Keyword)
+	rating = models.IntegerField('Yelp Rating')
+	star_url = models.CharField('Yelp Rating URL', max_length=256, null=True, blank=True)
+	image_url = models.CharField('Yelp Image URL', max_length=256, null=True, blank=True)
 
 	def __unicode__(self):
 		return self.name+', Location: '+self.city+', '+self.state+', '+self.country

@@ -19,4 +19,6 @@ urlpatterns = patterns('',
     url(r'^main/', views.main, name='main'),
     url(r'^personalized/', views.get_personalized_selection, name='personalized'),
     url(r'^all/', views.list_all_businesses, name='all-businesses'),
+    url(r'^keywords/', views.keywords, name='keywords'),
+    url(r'^restaurant/(?P<id_number>\d+)', views.restaurant, name='restaurant'),
 )
